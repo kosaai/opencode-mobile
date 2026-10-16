@@ -1,0 +1,184 @@
+name: Build Unsigned iOS IPA
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/build-unsigned-ios.yml
+      - scripts/verify-ios-ipa.py
+
+permissions:
+  contents: read
+
+concurrency:
+  group: unsigned-ios-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Build and verify iPhone arm64 IPA
+    runs-on: macos-26
+    timeout-minutes: 90
+    env:
+      CI: '1'
+      EXPO_NO_TELEMETRY: '1'
+      EXPO_APP_VARIANT: production
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+
+      - name: Inspect native build tools
+        run: |
+          xcodebuild -version
+          xcrun --sdk iphoneos --show-sdk-version
+          node --version
+          npm --version
+          gem install cocoapods --version 1.16.2 --no-document
+          pod --version
+
+      - name: Install locked JavaScript dependencies
+        run: npm ci
+
+      - name: Generate production iOS project
+        run: npx expo prebuild --platform ios --clean --no-install
+
+      - name: Install CocoaPods dependencies
+        run: |
+          set -o pipefail
+          pod install --project-directory=ios 2>&1 | tee "$RUNNER_TEMP/pod-install.log"
+
+      - name: Discover application workspace and scheme
+        id: native
+        run: |
+          python3 - <<'PY'
+          import os
+          from pathlib import Path
+
+          workspaces = list(Path('ios').glob('*.xcworkspace'))
+          if len(workspaces) != 1:
+              raise SystemExit(f'Expected one generated application workspace: {workspaces}')
+          workspace = workspaces[0]
+          scheme = workspace.stem
+          scheme_file = Path('ios') / f'{scheme}.xcodeproj/xcshareddata/xcschemes/{scheme}.xcscheme'
+          if not scheme_file.is_file():
+              raise SystemExit(f'Application scheme not found: {scheme_file}')
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
+              output.write(f'workspace={workspace}\nscheme={scheme}\n')
+          print(f'Workspace: {workspace}; application scheme: {scheme}')
+          PY
+
+      - name: Archive for physical iPhone without code signing
+        env:
+          IOS_WORKSPACE: ${{ steps.native.outputs.workspace }}
+          IOS_SCHEME: ${{ steps.native.outputs.scheme }}
+        run: |
+          set -o pipefail
+          xcodebuild archive \
+            -workspace "$IOS_WORKSPACE" \
+            -scheme "$IOS_SCHEME" \
+            -configuration Release \
+            -sdk iphoneos \
+            -destination 'generic/platform=iOS' \
+            -archivePath "$RUNNER_TEMP/OpenCodeMobile.xcarchive" \
+            -derivedDataPath "$RUNNER_TEMP/DerivedData" \
+            -resultBundlePath "$RUNNER_TEMP/UnsignedBuild.xcresult" \
+            ARCHS=arm64 \
+            ONLY_ACTIVE_ARCH=NO \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY= \
+            DEVELOPMENT_TEAM= \
+            PROVISIONING_PROFILE_SPECIFIER= \
+            COMPILER_INDEX_STORE_ENABLE=NO \
+            2>&1 | tee "$RUNNER_TEMP/xcodebuild.log"
+
+      - name: Package unsigned application as IPA
+        run: |
+          python3 - <<'PY'
+          import os
+          import shutil
+          import subprocess
+          from pathlib import Path
+
+          temporary = Path(os.environ['RUNNER_TEMP'])
+          applications = list((temporary / 'OpenCodeMobile.xcarchive/Products/Applications').glob('*.app'))
+          if len(applications) != 1:
+              raise SystemExit(f'Expected one archived application: {applications}')
+          payload = temporary / 'unsigned-ipa/Payload'
+          payload.mkdir(parents=True)
+          application = payload / applications[0].name
+          subprocess.run(['ditto', str(applications[0]), str(application)], check=True)
+
+          # A downloaded framework may carry an upstream ad-hoc signature.
+          # Remove existing signatures locally; never create a new signature.
+          macho_magic = {bytes.fromhex(value) for value in (
+              'cffaedfe', 'feedfacf', 'cefaedfe', 'feedface',
+              'cafebabe', 'bebafeca', 'cafebabf', 'bfbafeca',
+          )}
+          for path in application.rglob('*'):
+              if not path.is_file() or path.is_symlink():
+                  continue
+              with path.open('rb') as stream:
+                  is_macho = stream.read(4) in macho_magic
+              if is_macho and subprocess.run(
+                  ['codesign', '-d', str(path)], capture_output=True,
+              ).returncode == 0:
+                  subprocess.run(['codesign', '--remove-signature', str(path)], check=True)
+          for path in list(application.rglob('_CodeSignature')):
+              shutil.rmtree(path)
+          if list(application.rglob('embedded.mobileprovision')):
+              raise SystemExit('Unexpected provisioning profile in unsigned archive')
+
+          output = Path('ios-build')
+          output.mkdir(exist_ok=True)
+          subprocess.run([
+              'ditto', '-c', '-k', '--keepParent', str(payload),
+              str(output / 'OpenCodeMobile-unsigned.ipa'),
+          ], check=True)
+          PY
+
+      - name: Verify real unsigned iPhone arm64 IPA
+        run: |
+          python3 scripts/verify-ios-ipa.py ios-build/OpenCodeMobile-unsigned.ipa \
+            --report "$RUNNER_TEMP/ipa-verification.json"
+          {
+            echo '## Verified unsigned iPhone IPA'
+            echo '```json'
+            cat "$RUNNER_TEMP/ipa-verification.json"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload unsigned IPA
+        uses: actions/upload-artifact@v4
+        with:
+          name: OpenCodeMobile-unsigned.ipa
+          path: ios-build/OpenCodeMobile-unsigned.ipa
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 14
+
+      - name: Upload build diagnostics on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: unsigned-ios-build-diagnostics
+          path: |
+            ${{ runner.temp }}/pod-install.log
+            ${{ runner.temp }}/xcodebuild.log
+            ${{ runner.temp }}/UnsignedBuild.xcresult
+            ${{ runner.temp }}/ipa-verification.json
+          if-no-files-found: ignore
+          retention-days: 7

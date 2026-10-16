@@ -80,6 +80,27 @@ trusted environment, and sandbox configuration. See
 
 ### iOS Builds
 
+#### Unsigned iPhone IPA
+
+Run **Build Unsigned iOS IPA** (`.github/workflows/build-unsigned-ios.yml`)
+from Actions to build the selected branch for a physical iPhone. It uses the
+locked npm dependencies, production Expo prebuild, CocoaPods and a Release
+`iphoneos` archive with code signing disabled. It does not require Apple or
+Expo credentials and does not publish a release or upload to a store.
+
+Download the **OpenCodeMobile-unsigned.ipa** artifact from the successful run;
+it contains `OpenCodeMobile-unsigned.ipa`, ready for your own signing process.
+Artifacts are retained for 14 days. The workflow verifies ZIP integrity,
+`Payload/*.app`, Info.plist, the embedded release JavaScript, and both the
+Mach-O arm64 CPU type and iOS device platform (not arm64 Simulator).
+The same portable check can be run after downloading:
+
+```bash
+python3 scripts/verify-ios-ipa.py OpenCodeMobile-unsigned.ipa
+```
+
+#### Signed store release
+
 Build a local iOS release:
 ```bash
 npm run build:ios:local
