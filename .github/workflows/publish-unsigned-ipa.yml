@@ -1,0 +1,107 @@
+name: Publish Unsigned IPA Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      run_id:
+        description: Workflow run that produced the unsigned IPA artifact
+        required: true
+        type: string
+      tag:
+        description: Release tag to create or update
+        required: true
+        default: unsigned-latest
+        type: string
+      title:
+        description: Release title
+        required: false
+        default: Unsigned iPhone IPA
+        type: string
+
+permissions:
+  contents: write
+  actions: read
+
+concurrency:
+  group: publish-unsigned-ipa-${{ inputs.tag }}
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    name: Publish IPA as release asset
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      GH_TOKEN: ${{ github.token }}
+      RELEASE_TAG: ${{ inputs.tag }}
+
+    steps:
+      - name: Download unsigned IPA artifact from the build run
+        run: |
+          set -euo pipefail
+          mkdir -p publish
+          gh run download "${{ inputs.run_id }}" \
+            --repo "${{ github.repository }}" \
+            --name "OpenCodeMobile-unsigned.ipa" \
+            --dir publish
+          ls -la publish
+
+      - name: Confirm the downloaded IPA is the real bundle
+        run: |
+          set -euo pipefail
+          test -s publish/OpenCodeMobile-unsigned.ipa
+          python3 - <<PY
+          import zipfile
+          path = "publish/OpenCodeMobile-unsigned.ipa"
+          with zipfile.ZipFile(path) as zf:
+              bad = zf.testzip()
+              if bad is not None:
+                  raise SystemExit("corrupt member: %s" % bad)
+              names = zf.namelist()
+          if not any(n.startswith("Payload/") and n.endswith(".app/") for n in names):
+              raise SystemExit("missing Payload app bundle")
+          if not any(n == "Payload/OpenCodeMobile.app/Info.plist" for n in names):
+              raise SystemExit("missing Info.plist")
+          if any("_CodeSignature" in n for n in names):
+              raise SystemExit("unexpected code signature in an unsigned IPA")
+          print("verified members: %d" % len(names))
+          PY
+
+      - name: Create or update the release with the IPA asset
+        run: |
+          set -euo pipefail
+          NOTES="$(cat <<EOF
+          Unsigned iPhone build of OpenCodeMobile.
+
+          - Architecture: arm64 (physical iPhone, not Simulator)
+          - SDK: iphoneos device build
+          - Signed: no - sign it before installing
+          - Source run: ${{ inputs.run_id }}
+
+          Download OpenCodeMobile-unsigned.ipa and sign it with your own
+          certificate and provisioning profile.
+          EOF
+          )"
+          if gh release view "$RELEASE_TAG" --repo "${{ github.repository }}" >/dev/null 2>&1; then
+            gh release upload "$RELEASE_TAG" --repo "${{ github.repository }}" \
+              --clobber publish/OpenCodeMobile-unsigned.ipa
+          else
+            gh release create "$RELEASE_TAG" \
+              --repo "${{ github.repository }}" \
+              --target "${{ github.sha }}" \
+              --prerelease \
+              --title "${{ inputs.title }}" \
+              --notes "$NOTES" \
+              publish/OpenCodeMobile-unsigned.ipa
+          fi
+          gh release view "$RELEASE_TAG" \
+            --repo "${{ github.repository }}" \
+            --json assets,url,tagName
+
+      - name: Report the direct download link
+        run: |
+          {
+            echo "## Direct IPA download link"
+            echo ""
+            echo "https://github.com/${{ github.repository }}/releases/download/${RELEASE_TAG}/OpenCodeMobile-unsigned.ipa"
+          } >> "$GITHUB_STEP_SUMMARY"
