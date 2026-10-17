@@ -324,6 +324,17 @@
     "description": "Verwende die Systemsprache oder wähle eine für die App-Oberfläche."
   },
   "appearance": {
+    "title": "Erscheinungsbild",
+    "theme": {
+      "title": "Theme",
+      "description": "Farbschema der App auswählen. \"System\" folgt der Geräteeinstellung.",
+      "light": "Hell",
+      "dark": "Dunkel"
+    },
+    "uiScale": {
+      "title": "UI-Skalierung",
+      "description": "Texte, Schaltflächen, Abstände und Symbole gemeinsam anpassen. 100 % ist der Standard."
+    },
     "chatTextSize": "Chat-Textgröße",
     "chatTextSizeDescription": "Passe die Textgröße der Nachrichten an. Kleinere Schrift zeigt mehr vom Gespräch auf einmal.",
     "flatThread": {

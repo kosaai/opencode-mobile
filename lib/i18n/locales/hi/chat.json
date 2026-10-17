@@ -44,7 +44,10 @@
     "tabFilesChanged_one": "{{files}} फ़ाइल बदली",
     "tabFilesChanged_many": "{{files}} फ़ाइलें बदलीं",
     "tabFilesChanged_other": "{{files}} फ़ाइलें बदलीं",
-    "restoreFailedInput": "विफल संदेश वापस लाएँ"
+    "restoreFailedInput": "विफल संदेश वापस लाएँ",
+    "tabFilesChanged_zero": "{{files}} फ़ाइलें बदलीं",
+    "tabFilesChanged_two": "{{files}} फ़ाइलें बदलीं",
+    "tabFilesChanged_few": "{{files}} फ़ाइलें बदलीं"
   },
   "content": {
     "connectionIssue": "कनेक्शन समस्या",
@@ -107,7 +110,16 @@
     "fileCount_one": "{{count}} फ़ाइल",
     "fileCount_many": "{{count}} फ़ाइलें",
     "fileCount_other": "{{count}} फ़ाइलें",
-    "requestedBy": "{{name}} द्वारा अनुरोधित"
+    "requestedBy": "{{name}} द्वारा अनुरोधित",
+    "hiddenLines_zero": "... {{count}} अपरिवर्तित पंक्तियाँ",
+    "hiddenLines_two": "... {{count}} अपरिवर्तित पंक्तियाँ",
+    "hiddenLines_few": "... {{count}} अपरिवर्तित पंक्तियाँ",
+    "updatedPatches_zero": "{{count}} पैच अपडेट किए",
+    "updatedPatches_two": "{{count}} पैच अपडेट किए",
+    "updatedPatches_few": "{{count}} पैच अपडेट किए",
+    "fileCount_zero": "{{count}} फ़ाइलें",
+    "fileCount_two": "{{count}} फ़ाइलें",
+    "fileCount_few": "{{count}} फ़ाइलें"
   },
   "composer": {
     "chooseAssistantMode": "सहायक मोड चुनें",
@@ -255,7 +267,13 @@
     "filesChangedSimple_other": "{{files}} फ़ाइलें बदलीं",
     "filesChangedCompact_one": "{{files}} फ़ाइल बदली, +{{additions}} / -{{deletions}}",
     "filesChangedCompact_many": "{{files}} फ़ाइलें बदलीं, +{{additions}} / -{{deletions}}",
-    "filesChangedCompact_other": "{{files}} फ़ाइलें बदलीं, +{{additions}} / -{{deletions}}"
+    "filesChangedCompact_other": "{{files}} फ़ाइलें बदलीं, +{{additions}} / -{{deletions}}",
+    "filesChangedSimple_zero": "{{files}} फ़ाइलें बदलीं",
+    "filesChangedSimple_two": "{{files}} फ़ाइलें बदलीं",
+    "filesChangedSimple_few": "{{files}} फ़ाइलें बदलीं",
+    "filesChangedCompact_zero": "{{files}} फ़ाइलें बदलीं, +{{additions}} / -{{deletions}}",
+    "filesChangedCompact_two": "{{files}} फ़ाइलें बदलीं, +{{additions}} / -{{deletions}}",
+    "filesChangedCompact_few": "{{files}} फ़ाइलें बदलीं, +{{additions}} / -{{deletions}}"
   },
   "session": {
     "chooseWorkspace": "कार्यक्षेत्र चुनें",

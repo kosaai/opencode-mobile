@@ -81,10 +81,11 @@ for (const legacyControlPlane of ['https://api.getopencode.app', 'https://apista
   assert.equal(controlPlane, 'https://api.opencodecloud.link', 'Discarded legacy preferences retain the new production default.');
   assert.deepEqual(controlPlaneStorage.removed, ['control-plane']);
 }
-const preferences = await loadTs('providers/opencode-preferences.ts');
+const uiScale = await loadTs('lib/ui-scale.ts');
+const preferences = await loadTs('providers/opencode-preferences.ts', { '@/lib/ui-scale': uiScale });
 const profileUrls = await loadTs('lib/opencode/client/url.ts', { './types': { defaultConnectionSettings: { serverUrl: 'http://localhost' } } });
 const { parseConnectionSettings, parseChatPreferences } = await loadTs('providers/persisted-preferences.ts', {
-  '@/lib/connect': connect, '@/providers/opencode-preferences': preferences, '@/lib/opencode/client/url': profileUrls,
+  '@/lib/connect': connect, '@/providers/opencode-preferences': preferences, '@/lib/opencode/client/url': profileUrls, '@/lib/ui-scale': uiScale,
 });
 assert.throws(() => parseConnectionSettings('{"serverUrl":123}'), /Invalid/);
 assert.equal(parseConnectionSettings('{"serverUrl":"https://alice:secret@host.test/proxy","username":"configured"}').serverUrl, 'https://host.test/proxy');

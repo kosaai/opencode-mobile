@@ -90,7 +90,7 @@ describe('prompt submission ownership', () => {
     const notifications = { clearPendingTaskFinishedNotification: vi.fn(async () => true),
       listPendingTaskFinishedNotifications: async () => [], notifyTaskFinished: vi.fn(), trackPendingTaskFinishedNotification: vi.fn(async () => {}) };
     const refresh = vi.fn(async () => []);
-    const preferences = await loadTs('providers/opencode-preferences.ts');
+    const preferences = await loadTs('providers/opencode-preferences.ts', { '@/lib/ui-scale': await loadTs('lib/ui-scale.ts') });
     const models = await loadTs('providers/opencode-model-selection.ts', { '@/providers/opencode-preferences': preferences });
     const scopes = await loadTs('lib/connection-scope.ts', { 'base-64': { encode: (value: string) => Buffer.from(value, 'binary').toString('base64') } });
     const { usePromptLifecycle } = await loadTs('providers/use-prompt-lifecycle.ts', {

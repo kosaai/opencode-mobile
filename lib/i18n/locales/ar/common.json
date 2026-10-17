@@ -1,0 +1,61 @@
+{
+  "tabs": {
+    "chat": "المحادثة",
+    "terminal": "الطرفية",
+    "workspace": "مساحة العمل",
+    "settings": "الإعدادات"
+  },
+  "actions": {
+    "cancel": "إلغاء",
+    "save": "حفظ",
+    "close": "إغلاق",
+    "back": "رجوع",
+    "next": "التالي",
+    "done": "تم",
+    "retry": "إعادة المحاولة",
+    "delete": "حذف",
+    "dismiss": "تجاهل",
+    "create": "إنشاء",
+    "refresh": "تحديث",
+    "remove": "إزالة",
+    "open": "فتح",
+    "copy": "نسخ",
+    "connect": "اتصال",
+    "reconnect": "إعادة الاتصال",
+    "disconnect": "قطع الاتصال",
+    "edit": "تعديل",
+    "add": "إضافة",
+    "submit": "إرسال",
+    "stop": "إيقاف",
+    "select": "تحديد",
+    "closeWithName": "إغلاق {{title}}",
+    "openSettings": "فتح الإعدادات"
+  },
+  "select": {
+    "chooseOption": "اختر خيارًا"
+  },
+  "labels": {
+    "connected": "متصل",
+    "connecting": "جارٍ الاتصال",
+    "enabled": "مفعّل",
+    "off": "معطّل",
+    "active": "نشط",
+    "unavailable": "غير متاح",
+    "unknown": "غير معروف",
+    "none": "بدون",
+    "notSet": "غير محدد",
+    "systemDefault": "الافتراضي للنظام"
+  },
+  "updates": {
+    "available": "يتوفر تحديث",
+    "ready": "التحديث جاهز",
+    "later": "لاحقًا",
+    "failed": "تعذّر التحديث. يُرجى المحاولة لاحقًا.",
+    "opening": "جارٍ فتح التحديث…",
+    "installing": "جارٍ تثبيت التحديث…",
+    "readyDescription": "أعد تشغيل التطبيق للتثبيت.",
+    "availableDescription": "ثبّت أحدث إصدار عبر App Store.",
+    "restart": "إعادة التشغيل والتثبيت",
+    "openStore": "فتح App Store"
+  }
+}

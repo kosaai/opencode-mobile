@@ -324,6 +324,17 @@
     "description": "システム言語を使用するか、アプリインターフェース用に1つ選択します。"
   },
   "appearance": {
+    "title": "外観",
+    "theme": {
+      "title": "テーマ",
+      "description": "アプリの配色を選択します。「システム」はデバイスの設定に従います。",
+      "light": "ライト",
+      "dark": "ダーク"
+    },
+    "uiScale": {
+      "title": "UI スケール",
+      "description": "テキスト、ボタン、余白、アイコンの大きさをまとめて変更します。100% が既定値です。"
+    },
     "chatTextSize": "チャットの文字サイズ",
     "chatTextSizeDescription": "チャットメッセージの文字サイズを調整します。小さくすると、一度により多くの会話を表示できます。",
     "flatThread": {

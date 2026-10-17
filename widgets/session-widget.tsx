@@ -15,7 +15,9 @@ export type WidgetKind = 'replies' | 'attention' | 'plan';
 type WidgetScheme = 'light' | 'dark';
 const PALETTE: Record<WidgetScheme, { surface: ColorProp; text: ColorProp; muted: ColorProp; accent: ColorProp }> = {
   light: { surface: '#FCFDFC', text: '#172126', muted: '#667874', accent: '#0F8A6C' },
-  dark: { surface: '#16201D', text: '#EAF3EF', muted: '#9AADA8', accent: '#7AE7C0' },
+  // Dark follows the app's true-black canvas so the widget matches the in-app
+  // dark theme instead of the old green-tinted charcoal.
+  dark: { surface: '#101010', text: '#FFFFFF', muted: '#9E9E9E', accent: '#7AE7C0' },
 };
 export function widgetKind(name: string): WidgetKind {
   return name === ATTENTION_WIDGET_NAME ? 'attention' : name === PLAN_WIDGET_NAME ? 'plan' : 'replies';

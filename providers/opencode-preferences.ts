@@ -2,11 +2,21 @@
 // Kept separate from provider orchestration so preference shape and prompt
 // wording are changed in one place.
 
+import { DEFAULT_UI_SCALE } from '@/lib/ui-scale';
 export type ReasoningLevel = 'low' | 'default' | 'high';
 export type ResponseScope = 'brief' | 'balanced' | 'detailed';
+export type ThemePreference = 'system' | 'light' | 'dark';
 export const TRANSCRIPT_FONT_SIZE_MIN = 12;
 export const TRANSCRIPT_FONT_SIZE_MAX = 24;
 export const DEFAULT_TRANSCRIPT_FONT_SIZE = 16;
+
+export const THEME_PREFERENCES: ThemePreference[] = ['system', 'light', 'dark'];
+
+export function normalizeThemePreference(value: unknown): ThemePreference | undefined {
+  return typeof value === 'string' && (THEME_PREFERENCES as string[]).includes(value)
+    ? (value as ThemePreference)
+    : undefined;
+}
 
 export function normalizeTranscriptFontSize(value: number | undefined) {
   return typeof value === 'number' && Number.isFinite(value)
@@ -27,6 +37,11 @@ export type ChatPreferences = {
   // App UI language preference. `undefined` follows the OS locale; it is stored
   // alongside chat preferences because it is global and not connection-scoped.
   language?: string;
+  // Color scheme preference. `undefined` follows the OS setting.
+  theme?: ThemePreference;
+  // Central UI scale factor (0.8 - 1.2) applied to text, spacing, and control
+  // sizes so the whole interface grows together without a global transform.
+  uiScale: number;
   providerId?: string;
   modelId?: string;
   enabledModelIds: string[];
@@ -55,6 +70,7 @@ export const defaultChatPreferences: ChatPreferences = {
   transcriptFontSize: DEFAULT_TRANSCRIPT_FONT_SIZE,
   flatTranscript: false,
   slimInterface: false,
+  uiScale: DEFAULT_UI_SCALE,
   enabledModelIds: [],
   providerModelSelections: {},
   recentModelIds: [],

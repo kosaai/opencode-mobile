@@ -14,6 +14,7 @@ import { Colors, Fonts } from '@/constants/theme';
 import { McpSection } from '@/components/settings/mcp-section';
 import {
   AiDefaultsSection,
+  AppearanceSection,
   EditorSection,
   ConnectionSection,
   SubscriptionSection,
@@ -36,7 +37,9 @@ import {
 } from '@/components/settings/settings-utils';
 import { OverlaySheet } from '@/components/ui/overlay-sheet';
 import { useColorScheme } from '@/hooks/use-color-scheme';
+import { formatUiScale, normalizeUiScale } from '@/lib/ui-scale';
 import { getSpeechVoiceOptions, type SpeechVoiceOption } from '@/lib/voice/speech-output';
+import { normalizeThemePreference } from '@/providers/opencode-preferences';
 import { useApprovals, useCapabilities, useConnection, useDiagnostics, useMcp, useOnboarding, usePreferences, useUpdates } from '@/providers/opencode-contexts';
 
 // One entry per settings section. Adding a section means adding an entry here
@@ -117,6 +120,13 @@ export default function SettingsScreen() {
     () => WORKING_SOUND_OPTIONS.find((option) => option.value === chatPreferences.workingSoundVariant) || WORKING_SOUND_OPTIONS[0],
     [chatPreferences.workingSoundVariant],
   );
+  // The Appearance row summarizes the two preferences it opens so the effect of
+  // theme/scale changes is visible without opening the section again.
+  const appearanceSummary = useMemo(() => {
+    const theme = normalizeThemePreference(chatPreferences.theme) ?? 'system';
+    const themeLabel = theme === 'system' ? t('common:labels.systemDefault') : t(`settings:appearance.theme.${theme}`);
+    return `${themeLabel} · ${formatUiScale(normalizeUiScale(chatPreferences.uiScale))}`;
+  }, [chatPreferences.theme, chatPreferences.uiScale, t]);
 
   function handleModelToggle(modelId: string, checked: boolean) {
     const nextEnabledModelIds = checked
@@ -173,6 +183,14 @@ export default function SettingsScreen() {
       summary: t('settings:screen.summaries.configuredCount', { value: configuredProviders.length }),
       onPress: () => setOpenSection('ai'),
       render: () => <AiDefaultsSection availableModels={availableModels} availableProviders={availableProviders} configuredProviders={configuredProviders} contract={serverCapabilities.contract} enabledModelIds={enabledModelIds} expandedProviderId={expandedProviderId} onActivateProviderAccount={(credentialId) => void providerAccounts.activate(credentialId)} onExpandedProviderChange={setExpandedProviderId} onModelToggle={handleModelToggle} onRemoveProvider={handleRemoveProvider} onRemoveProviderAccount={(credentialId) => void providerAccounts.remove(credentialId)} onStartProviderConfiguration={providerConfig.startProviderConfiguration} palette={palette} providerAuthMethodsById={providerAuthMethodsById} />,
+    },
+    {
+      id: 'appearance',
+      icon: 'palette-outline',
+      title: t('settings:screen.categories.appearance'),
+      summary: appearanceSummary,
+      onPress: () => setOpenSection('appearance'),
+      render: () => <AppearanceSection chatPreferences={chatPreferences} palette={palette} updateChatPreferences={updateChatPreferences} />,
     },
     {
       id: 'notifications',

@@ -324,6 +324,17 @@
     "description": "Usa el idioma del sistema o elige uno para la interfaz de la aplicación."
   },
   "appearance": {
+    "title": "Apariencia",
+    "theme": {
+      "title": "Tema",
+      "description": "Elige el esquema de colores de la app. «Sistema» sigue la configuración del dispositivo.",
+      "light": "Claro",
+      "dark": "Oscuro"
+    },
+    "uiScale": {
+      "title": "Escala de la interfaz",
+      "description": "Redimensiona texto, botones, espacios e iconos a la vez. 100 % es el valor predeterminado."
+    },
     "chatTextSize": "Tamaño del texto del chat",
     "chatTextSizeDescription": "Ajusta el tamaño del texto de los mensajes. Un texto más pequeño permite ver más conversación a la vez.",
     "flatThread": {

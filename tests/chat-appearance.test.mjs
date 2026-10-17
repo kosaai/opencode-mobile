@@ -1,10 +1,11 @@
 import assert from 'node:assert/strict';
-import { readFile } from 'node:fs/promises';
-import ts from 'typescript';
+import { loadTs } from './helpers/runtime.mjs';
 
-const source = await readFile(new URL('../providers/opencode-preferences.ts', import.meta.url), 'utf8');
-const output = ts.transpileModule(source, { compilerOptions: { module: ts.ModuleKind.ESNext, target: ts.ScriptTarget.ES2020 } }).outputText;
-const { normalizeTranscriptFontSize, defaultChatPreferences } = await import(`data:text/javascript,${encodeURIComponent(output)}`);
+// `opencode-preferences` imports the pure UI scale helpers, so the sandbox
+// maps the `@/lib/ui-scale` alias the same way other tests map aliases.
+const uiScale = await loadTs('lib/ui-scale.ts');
+const preferences = await loadTs('providers/opencode-preferences.ts', { '@/lib/ui-scale': uiScale });
+const { normalizeTranscriptFontSize, defaultChatPreferences } = preferences;
 
 assert.equal(normalizeTranscriptFontSize(16), 16);
 assert.equal(normalizeTranscriptFontSize(12.4), 12);
@@ -15,5 +16,12 @@ assert.equal(normalizeTranscriptFontSize(undefined), 16);
 
 assert.equal(defaultChatPreferences.flatTranscript, false);
 assert.equal(defaultChatPreferences.slimInterface, false);
+assert.equal(defaultChatPreferences.uiScale, 1);
+assert.equal(uiScale.normalizeUiScale(0.5), 0.8);
+assert.equal(uiScale.normalizeUiScale(2), 1.2);
+assert.equal(uiScale.normalizeUiScale(1.1), 1.1);
+assert.equal(uiScale.formatUiScale(0.9), '90%');
+assert.equal(preferences.normalizeThemePreference('dark'), 'dark');
+assert.equal(preferences.normalizeThemePreference('neon'), undefined);
 
 console.log('chat appearance tests passed');

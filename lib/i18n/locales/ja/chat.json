@@ -44,7 +44,10 @@
     "tabFilesChanged_one": "{{files}} ファイルを変更",
     "tabFilesChanged_many": "{{files}} ファイルを変更",
     "tabFilesChanged_other": "{{files}} ファイルを変更",
-    "restoreFailedInput": "送信に失敗したメッセージを復元"
+    "restoreFailedInput": "送信に失敗したメッセージを復元",
+    "tabFilesChanged_zero": "{{files}} ファイルを変更",
+    "tabFilesChanged_two": "{{files}} ファイルを変更",
+    "tabFilesChanged_few": "{{files}} ファイルを変更"
   },
   "content": {
     "connectionIssue": "接続の問題",
@@ -107,7 +110,16 @@
     "fileCount_one": "{{count}} ファイル",
     "fileCount_many": "{{count}} ファイル",
     "fileCount_other": "{{count}} ファイル",
-    "requestedBy": "{{name}} からのリクエスト"
+    "requestedBy": "{{name}} からのリクエスト",
+    "hiddenLines_zero": "... {{count}}行の変更なし",
+    "hiddenLines_two": "... {{count}}行の変更なし",
+    "hiddenLines_few": "... {{count}}行の変更なし",
+    "updatedPatches_zero": "{{count}} パッチを更新",
+    "updatedPatches_two": "{{count}} パッチを更新",
+    "updatedPatches_few": "{{count}} パッチを更新",
+    "fileCount_zero": "{{count}} ファイル",
+    "fileCount_two": "{{count}} ファイル",
+    "fileCount_few": "{{count}} ファイル"
   },
   "composer": {
     "chooseAssistantMode": "アシスタントモードを選択",
@@ -255,7 +267,13 @@
     "filesChangedSimple_other": "{{files}} ファイルを変更",
     "filesChangedCompact_one": "{{files}} ファイルを変更 · +{{additions}} / -{{deletions}}",
     "filesChangedCompact_many": "{{files}} ファイルを変更 · +{{additions}} / -{{deletions}}",
-    "filesChangedCompact_other": "{{files}} ファイルを変更 · +{{additions}} / -{{deletions}}"
+    "filesChangedCompact_other": "{{files}} ファイルを変更 · +{{additions}} / -{{deletions}}",
+    "filesChangedSimple_zero": "{{files}} ファイルを変更",
+    "filesChangedSimple_two": "{{files}} ファイルを変更",
+    "filesChangedSimple_few": "{{files}} ファイルを変更",
+    "filesChangedCompact_zero": "{{files}} ファイルを変更 · +{{additions}} / -{{deletions}}",
+    "filesChangedCompact_two": "{{files}} ファイルを変更 · +{{additions}} / -{{deletions}}",
+    "filesChangedCompact_few": "{{files}} ファイルを変更 · +{{additions}} / -{{deletions}}"
   },
   "session": {
     "chooseWorkspace": "ワークスペースを選択",

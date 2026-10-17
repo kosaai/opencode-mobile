@@ -14,6 +14,14 @@ import enSettings from '@/lib/i18n/locales/en/settings.json';
 import enShare from '@/lib/i18n/locales/en/share.json';
 import enTerminal from '@/lib/i18n/locales/en/terminal.json';
 import enWorkspace from '@/lib/i18n/locales/en/workspace.json';
+import arChat from '@/lib/i18n/locales/ar/chat.json';
+import arCommon from '@/lib/i18n/locales/ar/common.json';
+import arNotifications from '@/lib/i18n/locales/ar/notifications.json';
+import arOnboarding from '@/lib/i18n/locales/ar/onboarding.json';
+import arSettings from '@/lib/i18n/locales/ar/settings.json';
+import arShare from '@/lib/i18n/locales/ar/share.json';
+import arTerminal from '@/lib/i18n/locales/ar/terminal.json';
+import arWorkspace from '@/lib/i18n/locales/ar/workspace.json';
 import deChat from '@/lib/i18n/locales/de/chat.json';
 import deCommon from '@/lib/i18n/locales/de/common.json';
 import deNotifications from '@/lib/i18n/locales/de/notifications.json';
@@ -81,6 +89,16 @@ export const resources = {
     share: enShare,
     terminal: enTerminal,
     workspace: enWorkspace,
+  },
+  ar: {
+    chat: arChat,
+    common: arCommon,
+    notifications: arNotifications,
+    onboarding: arOnboarding,
+    settings: arSettings,
+    share: arShare,
+    terminal: arTerminal,
+    workspace: arWorkspace,
   },
   de: {
     chat: deChat,

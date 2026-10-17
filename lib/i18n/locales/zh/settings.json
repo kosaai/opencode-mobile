@@ -324,6 +324,17 @@
     "description": "使用系统语言或为应用界面选择一种语言。"
   },
   "appearance": {
+    "title": "外观",
+    "theme": {
+      "title": "主题",
+      "description": "选择应用配色。「跟随系统」将使用设备设置。",
+      "light": "浅色",
+      "dark": "深色"
+    },
+    "uiScale": {
+      "title": "界面缩放",
+      "description": "同时调整文字、按钮、间距和图标的大小。100% 为默认值。"
+    },
     "chatTextSize": "聊天文字大小",
     "chatTextSizeDescription": "调整聊天消息的文字大小。较小的文字可一次显示更多对话。",
     "flatThread": {

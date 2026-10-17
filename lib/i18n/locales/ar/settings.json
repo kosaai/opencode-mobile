@@ -1,0 +1,540 @@
+{
+  "screen": {
+    "categories": {
+      "connection": "الاتصال",
+      "ai": "الذكاء الاصطناعي والمزوّدات",
+      "notifications": "الإشعارات",
+      "voice": "الصوت والردود",
+      "advanced": "متقدّم",
+      "appearance": "المظهر",
+      "support": "الدعم",
+      "permissions": "الموافقات",
+      "subscription": "الاشتراك",
+      "services": "الخدمات"
+    },
+    "summaries": {
+      "configuredCount": "تم ضبط {{value}}",
+      "replyPlaybackOn": "تشغيل الردود مفعّل",
+      "replyPlaybackOff": "تشغيل الردود معطّل",
+      "advanced": "المحرّر، عام، خوادم MCP والتشخيص",
+      "support": "قيّم التطبيق، أرسل ملاحظات، احصل على المساعدة",
+      "permissions": "تم حفظ {{value}}",
+      "services": "تم كشف {{value}}"
+    }
+  },
+  "support": {
+    "title": "الدعم",
+    "description": "قيّم OpenCode Mobile على Google Play، أو أرسل ملاحظات للتحسين، أو احصل على المساعدة من صفحة الدعم.",
+    "rate": "قيّمنا على Play Store",
+    "feedback": "أرسل لنا ملاحظات",
+    "openSupport": "فتح صفحة الدعم"
+  },
+  "connection": {
+    "currentConnection": "الاتصال الحالي",
+    "noServerUrl": "لم يُضبط عنوان خادم",
+    "notSavedYet": "لم يُحفظ بعد. أضف اتصالًا للاحتفاظ به لاحقًا.",
+    "lastChecked": "آخر فحص {{time}}",
+    "serverUrlValue": "عنوان الخادم: {{url}}",
+    "usernameValue": "اسم المستخدم: {{username}}",
+    "usernameEmpty": "(بدون)",
+    "addConnection": "إضافة اتصال",
+    "editConnection": "تعديل الاتصال",
+    "addDescription": "أضف اتصالات للتبديل بين الخوادم دون إعادة كتابة عنوان URL وكلمة المرور.",
+    "saveAndConnect": "حفظ واتصال",
+    "deleteTitle": "حذف الاتصال",
+    "deleteMessage": "إزالة «{{name}}» من الاتصالات المحفوظة؟",
+    "deleteWebConfirm": "حذف الاتصال\n\n{{message}}",
+    "fields": {
+      "name": "الاسم",
+      "serverUrl": "عنوان الخادم",
+      "username": "اسم المستخدم",
+      "password": "كلمة المرور"
+    },
+    "errors": {
+      "name": "أدخل اسمًا لهذا الاتصال.",
+      "serverUrl": "أدخل عنوان الخادم.",
+      "invalidUrl": "أدخل عنوان خادم كاملًا، مثل http://192.168.1.10:4096.",
+      "save": "تعذّر حفظ هذا الاتصال."
+    },
+    "setup": {
+      "step": "الخطوة {{step}} من 2",
+      "addressTitle": "عنوان الخادم",
+      "detailsTitle": "تفاصيل الاتصال",
+      "addressHint": "اتصل بخادم OpenCode الخاص بك.",
+      "continue": "متابعة",
+      "change": "تغيير",
+      "detected": "تم اكتشاف OpenCode {{version}}",
+      "identify": "أدخل بيانات الاعتماد للتحقّق من الخادم.",
+      "customUsername": "اسم مستخدم مخصّص",
+      "passwordHint": "أدخل كلمة مرور الخادم.",
+      "optionalName": "الاسم (اختياري)",
+      "nameHint": "اتركه فارغًا لاستخدام عنوان IP أو النطاق للخادم.",
+      "showPassword": "إظهار كلمة المرور",
+      "hidePassword": "إخفاء كلمة المرور",
+      "scan": "مسح رمز QR محلي",
+      "pairCommand": "على حاسوبك، نفّذ الأمر opencode pair.",
+      "sameNetwork": "أبقِ الجهازين على نفس الشبكة.",
+      "scanAutomatic": "امسح للحفظ والاتصال تلقائيًا.",
+      "scanAgain": "مسح مرة أخرى",
+      "enterAddress": "إدخال العنوان يدويًا",
+      "unreachable": "تعذّر الوصول إلى الخادم. تحقّق من العنوان والشبكة ثم أعد المحاولة.",
+      "credentialsRejected": "رُفضت بيانات الاعتماد. تحقّق من كلمة المرور واسم المستخدم، أو امسح رمز QR جديدًا.",
+      "pairingErrors": {
+        "invalid": "هذا ليس رمز اقتران من OpenCode. نفّذ opencode pair وامسح مرة أخرى.",
+        "expired": "انتهت صلاحية رمز الاقتران هذا أو استُخدم بالفعل. نفّذ opencode pair مرة أخرى.",
+        "unreachable": "تعذّر الوصول إلى الخادم. تأكّد من أن الجهازين على نفس الشبكة، أو أدخل العنوان يدويًا.",
+        "loopback": "يحتوي هذا الرمز على عنوان localhost فقط. نفّذ opencode service set hostname 0.0.0.0 ثم opencode service start وopencode pair على حاسوبك."
+      }
+    }
+  },
+  "providers": {
+    "accounts": "الحسابات",
+    "addAnotherAccount": "إضافة حساب آخر",
+    "removeAccount": "إزالة الحساب",
+    "selectMethod": "اختيار طريقة تسجيل الدخول",
+    "apiKey": "مفتاح API",
+    "pasteApiKey": "الصق مفتاح API الخاص بك",
+    "chooseModels": "اختر النماذج المضبوطة التي تظهر في المحادثة. يبقى آخر نموذج تختاره في المحادثة محدّدًا للمحادثات الجديدة.",
+    "configuredProviders": "المزوّدات المضبوطة",
+    "addProvider": "إضافة مزوّد",
+    "connectFirst": "اتصل أولًا لتحميل المزوّدات.",
+    "configureAtLeastOne": "اضبط مزوّدًا واحدًا على الأقل لاختيار القيم الافتراضية.",
+    "selectedCount": "تم تحديد {{selected}} من {{total}}",
+    "reasoningSupported": "يدعم الاستدلال",
+    "standardModel": "نموذج قياسي",
+    "noModels": "لم يُعثر على نماذج لمزوّداتك المضبوطة.",
+    "configuredSuccess": "تم ضبط {{provider}} بنجاح.",
+    "signInFinished": "اكتمل تسجيل الدخول عبر {{provider}}. حُدّثت حالة المزوّد.",
+    "couldNotConfigure": "تعذّر ضبط المزوّد.",
+    "couldNotRemove": "تعذّر إزالة بيانات اعتماد المزوّد.",
+    "credentialsRemoved": "زيلت بيانات اعتماد {{provider}}.",
+    "removeTitle": "إزالة {{provider}}؟",
+    "removeMessage": "ستُزال بيانات الاعتماد المخزنة وإعدادات المزوّد.",
+    "removeWebConfirm": "إزالة {{provider}}؟\n\nستُزال بيانات الاعتماد المخزنة وإعدادات المزوّد.",
+    "signInTitle": "إكمال تسجيل الدخول للمزوّد",
+    "authorizationCode": "رمز التفويض",
+    "complete": "إكمال",
+    "continue": "متابعة",
+    "cancelSetup": "إلغاء إعداد المزوّد",
+    "configureProvider": "ضبط {{provider}}",
+    "oauthHint": "يفتح هذا مسار تسجيل الدخول للمزوّد في متصفحك.",
+    "signInPendingHint": "أنهِ تسجيل الدخول في متصفحك. تُحدَّث هذه الشاشة تلقائيًا.",
+    "pairingCode": "رمز الاقتران",
+    "openLink": "فتح الرابط",
+    "copyLink": "نسخ الرابط",
+    "authorizationCodeHint": "بعد تسجيل الدخول، انسخ الرمز المعروض والصقه هنا.",
+    "setupUnavailable": "تفاصيل الإعداد لهذا المزوّد غير متاحة حاليًا.",
+    "couldNotComplete": "تعذّر إكمال تسجيل الدخول.",
+    "removeCredentials": "إزالة بيانات اعتماد {{provider}}",
+    "promptDelivery": {
+      "label": "الرسائل المرسلة أثناء العمل",
+      "steer": {
+        "label": "توجيه",
+        "description": "تطبيق الرسالة في الخطوة التالية من الرد الحالي."
+      },
+      "queue": {
+        "label": "إضافة إلى الطابور",
+        "description": "وضع الرسالة في الطابور لجولة لاحقة."
+      }
+    }
+  },
+  "providerCopy": {
+    "openai": {
+      "label": "OpenAI",
+      "description": "نماذج GPT من OpenAI، بما فيها أحدث خيارات الاستدلال والنماذج متعددة الوسائط."
+    },
+    "anthropic": {
+      "label": "Anthropic",
+      "description": "نماذج Claude من Anthropic للبرمجة والتحليل والعمل بسياقات طويلة."
+    },
+    "github-copilot": {
+      "label": "GitHub Copilot",
+      "description": "استخدم اشتراك GitHub Copilot لتسجيل الدخول وتفعيل النماذج الأساسية المدعومة."
+    },
+    "google": {
+      "label": "Google",
+      "description": "نماذج Gemini من Google للمهام متعددة الوسائط والسياقات الكبيرة."
+    },
+    "groq": {
+      "label": "Groq",
+      "description": "استدلال مستضاف سريع للنماذج المفتوحة والمتقدّمة المدعومة."
+    },
+    "openrouter": {
+      "label": "OpenRouter",
+      "description": "وجّه الطلبات عبر عدة مزوّدات وعائلات نماذج من حساب واحد."
+    },
+    "mistral": {
+      "label": "Mistral",
+      "description": "نماذج Mistral AI المستضافة للمهام العامة وأعمال البرمجة."
+    },
+    "xai": {
+      "label": "xAI",
+      "description": "نماذج Grok من xAI."
+    },
+    "azure": {
+      "label": "Azure OpenAI",
+      "description": "نماذج متوافقة مع OpenAI مُنشرة عبر Azure."
+    }
+  },
+  "notifications": {
+    "status": {
+      "checking": "جارٍ الفحص",
+      "enabled": "مفعّل",
+      "needsSetup": "يحتاج إعدادًا"
+    },
+    "background": {
+      "checking": "جارٍ الفحص",
+      "ready": "جاهز",
+      "limited": "محدود"
+    },
+    "summary": {
+      "enabled": "الإشعارات مفعّلة",
+      "off": "الإشعارات معطّلة",
+      "background": "في الخلفية: {{status}}"
+    },
+    "enable": "تفعيل الإشعارات",
+    "settings": "إعدادات الإشعارات",
+    "appSettings": "إعدادات التطبيق",
+    "appSettingsDescription": "راجع إعدادات النظام لهذا التطبيق.",
+    "batteryOptimization": "تحسين البطارية",
+    "batteryOptimizationDescription": "يسمح للتطبيق بالعمل بشكل أكثر موثوقية في الخلفية.",
+    "batterySaver": "توفير البطارية",
+    "batterySaverDescription": "قد يؤخّر وضع توفير البطارية التذكيرات.",
+    "refreshStatus": "تحديث الحالة",
+    "enabledFeedback": "الإشعارات مفعّلة على هذا الجهاز.",
+    "disabledFeedback": "لا تزال الإشعارات معطّلة. افتح إعدادات النظام لتفعيلها يدويًا."
+  },
+  "voice": {
+    "onDeviceInput": {
+      "title": "الإدخال الصوتي على الجهاز",
+      "description": "إعطاء أولوية للتعرّف الصوتي المحلي وتجنّب الرجوع إلى السحابة عند الإمكان."
+    },
+    "autoPlay": {
+      "title": "تشغيل ردود المساعد تلقائيًا",
+      "description": "قراءة آخر رد من المساعد بصوت عالٍ عند اكتماله."
+    },
+    "workingSound": {
+      "title": "صوت العمل",
+      "description": "تشغيل مقطع هادئ أثناء بقاء المساعد يعمل على الرد."
+    },
+    "resumeListening": {
+      "title": "استئناف الاستماع بعد الرد",
+      "description": "في وضع المحادثة، يبدأ الاستماع مجددًا بعد انتهاء التشغيل المنطوق."
+    },
+    "speechLocale": {
+      "label": "لغة النطق",
+      "helper": "اتركه فارغًا لاستخدام لغة النظام الافتراضية في الإدخال الصوتي والتشغيل."
+    },
+    "responseScope": {
+      "label": "نطاق الرد",
+      "brief": {
+        "label": "موجز",
+        "description": "إجابات قصيرة ومحدّدة النطاق للتبادل الطبيعي."
+      },
+      "balanced": {
+        "label": "متوازن",
+        "description": "إجابات موجزة مع سياق إضافي بسيط عند الحاجة."
+      },
+      "detailed": {
+        "label": "مفصّل",
+        "description": "شروحات أطول وتفاصيل داعمة أكثر."
+      }
+    },
+    "nextActions": {
+      "title": "إجراءات تالية بسيطة",
+      "description": "أنهِ الرد بتوصية قصيرة عند وجود إجراء تالي واضح."
+    },
+    "speechRate": {
+      "label": "سرعة النطق"
+    },
+    "workingSoundVariant": {
+      "label": "صوت العمل",
+      "soft": {
+        "label": "رنينة ناعمة",
+        "description": "نغمة دافئة متعدّدة الطبقات بنبض لطيف."
+      },
+      "glass": {
+        "label": "نغمة زجاجية",
+        "description": "مقطع محيطي أفتح وأخف."
+      }
+    },
+    "workingSoundVolume": {
+      "label": "مستوى صوت العمل"
+    },
+    "voiceSelect": {
+      "label": "الصوت"
+    },
+    "footer": "يمكن لنظام Android فحص الجلسات الجارية في الخلفية دوريًا ونشر إشعار عند انتهاء العمل. لا يدعم النطق في الخلفية أو التقاط الميكروفون بشكل مستمر.",
+    "check": {
+      "title": "فحص الصوت",
+      "permission": "الوصول إلى الميكروفون والكلام",
+      "recognition": "التعرّف على الكلام",
+      "onDevice": "التعرّف على الجهاز",
+      "restricted": "مقيَّد بسياسة الجهاز",
+      "restrictedHint": "التعرّف على الكلام مقيَّد على هذا الجهاز. تواصل مع مسؤول جهازك.",
+      "unavailableHint": "شغّل Siri والإملاء في إعدادات جهازك، ثم أعد الفحص.",
+      "deniedHint": "رُفض الوصول. افتح الإعدادات لتفعيله يدويًا.",
+      "enable": "تفعيل الإدخال الصوتي",
+      "recheck": "إعادة فحص الصوت",
+      "test": "اختبار التشغيل",
+      "testPhrase": "التشغيل الصوتي يعمل.",
+      "testFailed": "فشل التشغيل الصوتي. تحقّق من الصوت المحدَّد ومستوى صوت الجهاز."
+    }
+  },
+  "diagnostics": {
+    "title": "تشخيص الخادم",
+    "server": "الخادم",
+    "openCodeVersion": "OpenCode {{version}}",
+    "healthUnavailable": "نقطة فحص الحالة غير متاحة",
+    "healthy": "سليم",
+    "realtimeUpdates": "تحديثات فورية",
+    "eventStreamConnected": "تم الاتصال بتدفّق الأحداث العام",
+    "pollingFallback": "الاستطلاع الاحتياطي مفعّل",
+    "subsystems": "الأنظمة الفرعية",
+    "subsystemsMcp": "MCP {{value}}",
+    "subsystemsLsp": "LSP {{value}}",
+    "subsystemsFormatters": "المنسّقات {{value}}",
+    "notAvailable": "غير متاح",
+    "refresh": "تحديث التشخيصات",
+    "networkUsage": "استخدام الشبكة",
+    "networkUsageValue": "{{requests}} طلبات · {{size}} أحجام استجابة معروفة اليوم",
+    "networkUsageReset": "تصفير"
+  },
+  "mcp": {
+    "title": "خوادم MCP",
+    "couldNotUpdate": "تعذّر تحديث خوادم MCP.",
+    "configurationUnavailable": "تفاصيل الإعداد غير متاحة",
+    "invalidCommand": "أدخل الأمر المحلي كمصفوفة نصوص JSON.",
+    "local": "محلي",
+    "remote": "عن بُعد",
+    "serverName": "اسم الخادم",
+    "commandArguments": "وسائط الأمر (JSON)",
+    "url": "URL",
+    "addLocalServer": "إضافة خادم محلي",
+    "addRemoteServer": "إضافة خادم عن بُعد",
+    "noServers": "لا توجد خوادم MCP مضبوطة.",
+    "statusConfigured": "مضبوط",
+    "statusDisabled": "معطّل",
+    "oauth": "OAuth",
+    "authorizationCode": "رمز التفويض (اختياري)",
+    "completeOAuth": "إكمال OAuth"
+  },
+  "language": {
+    "title": "اللغة",
+    "description": "استخدم لغة النظام أو اختر لغة لواجهة التطبيق."
+  },
+  "appearance": {
+    "title": "المظهر",
+    "theme": {
+      "title": "الثيم",
+      "description": "اختر نمط ألوان التطبيق. «حسب النظام» يتبع إعداد جهازك.",
+      "light": "فاتح",
+      "dark": "داكن"
+    },
+    "uiScale": {
+      "title": "حجم الواجهة",
+      "description": "غيّر حجم النصوص والأزرار والمسافات والأيقونات معًا. 100% هو الافتراضي."
+    },
+    "chatTextSize": "حجم نص المحادثة",
+    "chatTextSizeDescription": "اضبط حجم نص الرسائل في المحادثة. يعرض النص الأصغر جزءًا أكبر من المحادثة دفعة واحدة.",
+    "flatThread": {
+      "title": "محادثة مسطّحة",
+      "description": "عرض الرسائل بعرض كامل دون فقاعات ليتّسع جزء أكبر من المحادثة على الشاشة."
+    },
+    "slimInterface": {
+      "title": "واجهة مضغوطة",
+      "description": "تصغير الأزرار والمسافات والعناوين في المحادثة والطرفية ومساحة العمل ليتّسع نص أكثر على الشاشة."
+    }
+  },
+  "connect": {
+    "entry": "الاقتران عبر Cloud Link",
+    "title": "Cloud Link",
+    "description": "امسح رمز QR للموصّل على جهازك أو افتح رابط الاقتران الخاص به. تبقى الاتصالات اليدوية متاحة.",
+    "controlPlane": "مستوى تحكّم موثوق",
+    "scan": "مسح رمز QR للموصّل",
+    "pairingLink": "رابط الاقتران المباشر",
+    "openLink": "فتح رابط الاقتران",
+    "claim": "استلام والاتصال",
+    "retrySaving": "إعادة محاولة الحفظ الآمن",
+    "machines": "أجهزتك",
+    "refreshMachines": "تحديث الأجهزة",
+    "noMachines": "لا توجد أجهزة مسجّلة لهذا المستخدم.",
+    "pairRequired": "استعد الوصول للحصول على بيانات اعتماد لهذا الجهاز.",
+    "revoke": "إلغاء الجهاز",
+    "revokeConfirm": "حذف هذا الجهاز من كل الأجهزة؟ سيُحذف النفق العام الخاص به.",
+    "forget": "النسيان محليًا",
+    "forgetConfirm": "إزالة هذا الاتصال وبيانات اعتماده من هذا الجهاز؟ ستحتفظ الأجهزة الأخرى بالوصول.",
+    "expiresAt": "انتهاء صلاحية بيانات الاعتماد: {{date}}",
+    "savedConnection": "تم حفظ الاتصال: {{name}}",
+    "manage": "إدارة Cloud Link",
+    "cameraLoading": "جارٍ فتح الكاميرا",
+    "cameraPermission": "يلزم إذن الكاميرا لمسح رمز QR للموصّل. يمكنك فتح الرابط المباشر بدلاً من ذلك.",
+    "allowCamera": "السماح بالكاميرا",
+    "openSettings": "فتح إعدادات الجهاز",
+    "cameraUnavailable": "الكاميرا غير متاحة. افتح الرابط المباشر للموصّل بدلاً من ذلك.",
+    "progress": {
+      "idle": "جارٍ التحميل…",
+      "claiming": "جارٍ استلام الاقتران…",
+      "saving": "جارٍ حفظ بيانات الاعتماد بأمان…",
+      "connecting": "جارٍ الاتصال بالجهاز…",
+      "waitingForApproval": "أكّد هذا الاتصال على حاسوبك.",
+      "delayed": "لا موافقة بعد. وافق عليه على حاسوبك، أو امسح رمز QR جديدًا.",
+      "paired": "جارٍ التحميل…",
+      "catalog": "جارٍ تحميل اشتراكات المتجر…",
+      "purchasing": "جارٍ انتظار المتجر…",
+      "pending": "جارٍ انتظار الموافقة على الشراء…",
+      "restoring": "جارٍ استعادة المشتريات…",
+      "verifying": "جارٍ التحقق من الاشتراك…",
+      "savingSession": "جارٍ حفظ جلسة Cloud Link بأمان…",
+      "finalizing": "جارٍ إتمام عملية المتجر…"
+    },
+    "subscription": "اشتراك Cloud Link",
+    "subscriptionActive": "اشتراك Cloud Link نشط.",
+    "subscriptionRequired": "اشترِ أو استعد اشتراك المتجر لتفعيل Cloud Link.",
+    "purchase": "شراء",
+    "restore": "استعادة المشتريات",
+    "accessUnavailable": "الوصول غير متاح. اشترِ أو استعد لإعادة تفعيل هذا الجهاز.",
+    "scanHint": "امسح رمز QR الخاص بحاسوبك للاتصال.",
+    "scanNewQr": "امسح رمز QR الجديد على حاسوبك",
+    "manual": "يدوي",
+    "manualHint": "أدخل عنوان خادمك (URL) وبيانات الاعتماد.",
+    "nativeOnly": "Cloud Link متاح في تطبيق iOS وAndroid.",
+    "benefits": "اتصل عبر رمز QR، وتحكّم في حاسوبك عن بُعد عبر Cloud Link، واستعد أجهزتك على جهاز آخر عبر استعادة المشتريات.",
+    "subscribe": "اشترك",
+    "options": "خيارات الاتصال",
+    "learnMore": "المزيد عن Cloud Link",
+    "onboarding": {
+      "step": "{{step}} من {{total}}",
+      "step1": {
+        "title": "حاسوبك.\nفي أي مكان.",
+        "subtitle": "استخدم OpenCode على حاسوبك من هاتفك.",
+        "action": "البدء"
+      },
+      "step2": {
+        "title": "إعداد\nحاسوبك",
+        "subtitle": "حمّل Cloud Link على حاسوبك.",
+        "action": "Cloud Link يعمل"
+      },
+      "step3": {
+        "title": "تفعيل\nCloud Link",
+        "subtitle": "اشترك لربط هذا التطبيق بحاسوبك عبر الإنترنت.",
+        "action": "اشترك وتابع"
+      },
+      "step4": {
+        "title": "اقترن بـ\nحاسوبك",
+        "subtitle": "امسح رمز QR المعروض في Cloud Link على حاسوبك.",
+        "action": "مسح رمز QR"
+      },
+      "explanation": "يربط Cloud Link أجهزتك عبر الإنترنت. أبقِ حاسوبك مضاءً وCloud Link يعمل.",
+      "instruction1": "التثبيت على حاسوبك",
+      "instruction2": "الاشتراك في هذا التطبيق",
+      "instruction3": "المسح للاقتران",
+      "openOnComputer": "على حاسوبك، افتح:",
+      "copySetupUrl": "نسخ رابط إعداد الحاسوب",
+      "copied": "تم نسخ رابط الإعداد",
+      "copyError": "تعذّر نسخ الرابط. افتح opencodecloud.link على حاسوبك.",
+      "downloadHint": "حمّل Cloud Link وافتحه، ثم أبقِ رمز QR للاقتران على الشاشة.",
+      "remote": "الاتصال عبر الإنترنت",
+      "pair": "اقترن حاسوبك بهذا التطبيق",
+      "billing": "تتولى متاجر التطبيقات الفوترة.",
+      "checkoutHint": "يفتح متجر التطبيقات لتأكيد الشراء.",
+      "approveHint": "ثم وافق على الاتصال على حاسوبك.",
+      "usePairingLink": "استخدام رابط الاقتران"
+    }
+  },
+  "editor": {
+    "title": "المحرّر"
+  },
+  "general": {
+    "title": "عام",
+    "resetOnboarding": "إعادة ضبط الإعداد التعريفي"
+  },
+  "autoUpdate": {
+    "title": "فحص التحديثات",
+    "enable": {
+      "title": "البحث عن التحديثات",
+      "description": "عرض الإصدارات الجديدة عند توفرها في المتجر."
+    },
+    "checkPeriod": {
+      "label": "فترة الفحص",
+      "available": {
+        "label": "عند التوفر",
+        "description": "عرض الإصدار الجديد فور إبلاغ المتجر به."
+      },
+      "daily": {
+        "label": "يوميًا",
+        "description": "البحث عن إصدار جديد مرة واحدة يوميًا على الأكثر."
+      },
+      "weekly": {
+        "label": "أسبوعيًا",
+        "description": "البحث عن إصدار جديد مرة واحدة أسبوعيًا على الأكثر."
+      }
+    }
+  },
+  "permissions": {
+    "title": "الأذونات المحفوظة",
+    "description": "قواعد أنشأها خيار «السماح دائمًا». إزالة قاعدة يجعل الخادم يسأل مجددًا.",
+    "empty": "لا توجد أذونات محفوظة.",
+    "remove": "إزالة",
+    "removeTitle": "إزالة أذن محفوظة",
+    "removeMessage": "هل تريد إيقاف السماح التلقائي بـ {{resource}}؟",
+    "refresh": "تحديث"
+  },
+  "subscription": {
+    "inactive": "لا يوجد اشتراك نشط",
+    "accessThrough": "الوصول حتى {{date}}",
+    "description": "وصول عن بُعد إلى أجهزتك الخاصة بـ OpenCode.",
+    "manage": "إدارة الاشتراك",
+    "opensApple": "يفتح اشتراكات App Store",
+    "opensGoogle": "يفتح Google Play",
+    "restoreDescription": "استعادة عملية شراء حالية",
+    "machines": "الأجهزة",
+    "machinesDescription": "عرض الأجهزة المتصلة وإدارتها"
+  },
+  "services": {
+    "title": "الخدمات المكشوفة",
+    "description": "أضف واستبدل واحذف مسارات الخدمات التي يكشفها الموصّل عبر نفقه. تُطبَّق التغييرات مباشرة.",
+    "add": "إضافة خدمة",
+    "addTitle": "خدمة جديدة",
+    "editTitle": "تعديل الخدمة",
+    "empty": "لا توجد خدمات مكشوفة بعد.",
+    "capacity": "يمكنك كشف حتى {{max}} خدمات.",
+    "saved": "تم حفظ {{name}}.",
+    "saveFailed": "تعذّر حفظ هذه الخدمة.",
+    "removed": "تمت إزالة {{name}}.",
+    "removeFailed": "تعذّر إزالة هذه الخدمة.",
+    "removeTitle": "إزالة {{name}}؟",
+    "removeMessage": "يتوقف الموصّل عن توجيه هذا المسار فورًا.",
+    "removeConfirm": "إزالة {{name}}؟ يتوقف الموصّل عن توجيه هذا المسار فورًا.",
+    "copyLink": "نسخ الرابط",
+    "linkCopied": "تم نسخ رابط الخدمة.",
+    "linkUnavailable": "تعذّر إنشاء رابط لهذه الخدمة.",
+    "enabledHint": "توجيه حركة المرور لهذا المسار عبر النفق.",
+    "stripPrefixHint": "إزالة بادئة المسار المطابقة قبل التحويل.",
+    "fields": {
+      "id": "ID",
+      "name": "الاسم",
+      "path": "المسار",
+      "target": "الوجهة",
+      "access": "الوصول",
+      "enabled": "مفعّل",
+      "stripPrefix": "إزالة بادئة المسار"
+    },
+    "access": {
+      "private": "خاص",
+      "public": "عام"
+    },
+    "errors": {
+      "required": "هذا الحقل مطلوب.",
+      "idFormat": "استخدم من 1 إلى 32 من الأحرف الصغيرة أو الأرقام أو الشرطات.",
+      "nameLength": "استخدم 64 حرفًا أو أقل.",
+      "pathRoot": "لا يمكن أن يكون المسار هو جذر الخادم.",
+      "pathReserved": "بادئة /_cloudlink محجوزة.",
+      "pathFormat": "استخدم مسارًا مثل /test/api دون استعلام أو جزء أو ترميز.",
+      "targetFormat": "استخدم عنوانًا مثل 127.0.0.1:3000.",
+      "targetLoopback": "يجب أن تكون الوجهة loopback (127.0.0.1 أو ::1).",
+      "targetReserved": "المنفذ 8443 محجوز للخدمات المكشوفة.",
+      "targetPort": "استخدم منفذًا غير مميّز بين 1024 و65535."
+    }
+  }
+}

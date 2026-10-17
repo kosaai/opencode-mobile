@@ -324,6 +324,17 @@
     "description": "Use the system language or pick one for the app interface."
   },
   "appearance": {
+    "title": "Appearance",
+    "theme": {
+      "title": "Theme",
+      "description": "Pick the app color scheme. System follows your device setting.",
+      "light": "Light",
+      "dark": "Dark"
+    },
+    "uiScale": {
+      "title": "UI Scale",
+      "description": "Resize text, buttons, spacing, and icons together. 100% is the default."
+    },
     "chatTextSize": "Chat text size",
     "chatTextSizeDescription": "Adjust message text size in chat. Smaller text shows more of the conversation at once.",
     "flatThread": {

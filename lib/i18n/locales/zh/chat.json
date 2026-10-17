@@ -44,7 +44,10 @@
     "tabFilesChanged_one": "{{files}} 个文件已更改",
     "tabFilesChanged_many": "{{files}} 个文件已更改",
     "tabFilesChanged_other": "{{files}} 个文件已更改",
-    "restoreFailedInput": "恢复发送失败的消息"
+    "restoreFailedInput": "恢复发送失败的消息",
+    "tabFilesChanged_zero": "{{files}} 个文件已更改",
+    "tabFilesChanged_two": "{{files}} 个文件已更改",
+    "tabFilesChanged_few": "{{files}} 个文件已更改"
   },
   "content": {
     "connectionIssue": "连接问题",
@@ -107,7 +110,16 @@
     "fileCount_one": "{{count}} 个文件",
     "fileCount_many": "{{count}} 个文件",
     "fileCount_other": "{{count}} 个文件",
-    "requestedBy": "{{name}} 请求"
+    "requestedBy": "{{name}} 请求",
+    "hiddenLines_zero": "... {{count}} 行未更改",
+    "hiddenLines_two": "... {{count}} 行未更改",
+    "hiddenLines_few": "... {{count}} 行未更改",
+    "updatedPatches_zero": "已更新 {{count}} 个补丁",
+    "updatedPatches_two": "已更新 {{count}} 个补丁",
+    "updatedPatches_few": "已更新 {{count}} 个补丁",
+    "fileCount_zero": "{{count}} 个文件",
+    "fileCount_two": "{{count}} 个文件",
+    "fileCount_few": "{{count}} 个文件"
   },
   "composer": {
     "chooseAssistantMode": "选择助手模式",
@@ -255,7 +267,13 @@
     "filesChangedSimple_other": "{{files}} 个文件已更改",
     "filesChangedCompact_one": "{{files}} 个文件已更改 · +{{additions}} / -{{deletions}}",
     "filesChangedCompact_many": "{{files}} 个文件已更改 · +{{additions}} / -{{deletions}}",
-    "filesChangedCompact_other": "{{files}} 个文件已更改 · +{{additions}} / -{{deletions}}"
+    "filesChangedCompact_other": "{{files}} 个文件已更改 · +{{additions}} / -{{deletions}}",
+    "filesChangedSimple_zero": "{{files}} 个文件已更改",
+    "filesChangedSimple_two": "{{files}} 个文件已更改",
+    "filesChangedSimple_few": "{{files}} 个文件已更改",
+    "filesChangedCompact_zero": "{{files}} 个文件已更改 · +{{additions}} / -{{deletions}}",
+    "filesChangedCompact_two": "{{files}} 个文件已更改 · +{{additions}} / -{{deletions}}",
+    "filesChangedCompact_few": "{{files}} 个文件已更改 · +{{additions}} / -{{deletions}}"
   },
   "session": {
     "chooseWorkspace": "选择工作区",

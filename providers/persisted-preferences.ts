@@ -1,7 +1,8 @@
 import type { OpencodeConnectionSettings } from '@/lib/opencode/client';
 import { parseConnectMetadata } from '@/lib/connect';
 import { stripServerUrlCredentials } from '@/lib/opencode/client/url';
-import { normalizeTranscriptFontSize, type ChatPreferences } from '@/providers/opencode-preferences';
+import { normalizeUiScale } from '@/lib/ui-scale';
+import { normalizeThemePreference, normalizeTranscriptFontSize, type ChatPreferences } from '@/providers/opencode-preferences';
 
 function parseObject(raw: string): Record<string, unknown> {
   const value: unknown = JSON.parse(raw);
@@ -47,6 +48,9 @@ export function parseChatPreferences(raw: string): Partial<ChatPreferences> {
     if (typeof value[key] === 'string' && options.includes(value[key])) preferences[key] = value[key];
   }
   if (typeof value.transcriptFontSize === 'number') preferences.transcriptFontSize = normalizeTranscriptFontSize(value.transcriptFontSize);
+  if (typeof value.uiScale === 'number') preferences.uiScale = normalizeUiScale(value.uiScale);
+  const theme = normalizeThemePreference(value.theme);
+  if (theme) preferences.theme = theme;
   if (typeof value.speechRate === 'number' && Number.isFinite(value.speechRate)) preferences.speechRate = Math.min(1.5, Math.max(0.5, value.speechRate));
   if (typeof value.workingSoundVolume === 'number' && Number.isFinite(value.workingSoundVolume)) preferences.workingSoundVolume = Math.min(1, Math.max(0, value.workingSoundVolume));
   return preferences as Partial<ChatPreferences>;

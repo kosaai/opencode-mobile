@@ -14,6 +14,7 @@ import { styles } from '@/components/chat/chat-view-styles';
 import { useChatViewController } from '@/components/chat/use-chat-view-controller';
 import { Colors } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
+import { useUiScale } from '@/hooks/use-ui-scale';
 import { normalizeTranscriptFontSize } from '@/providers/opencode-preferences';
 
 export function ChatView() {
@@ -21,6 +22,7 @@ export function ChatView() {
   const { block } = useUpdates();
   const colorScheme = useColorScheme() ?? 'light';
   const palette = Colors[colorScheme];
+  const uiScale = useUiScale();
   const insets = useSafeAreaInsets();
   const {
     activeProject, activeSession, approvals, attachments, availableAgents, awaitingUserInput,
@@ -102,7 +104,7 @@ export function ChatView() {
           displayTranscript={displayTranscript}
           flatTranscript={chatPreferences.flatTranscript === true}
           slim={slim}
-          transcriptFontSize={normalizeTranscriptFontSize(chatPreferences.transcriptFontSize)}
+          transcriptFontSize={uiScale.font(normalizeTranscriptFontSize(chatPreferences.transcriptFontSize))}
           expandedDiffId={expandedDiffId}
           hasOlderMessages={transcriptPaging.hasOlder}
           isLoadingOlderMessages={transcriptPaging.isLoadingOlder}

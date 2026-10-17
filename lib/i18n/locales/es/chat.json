@@ -44,7 +44,10 @@
     "tabFilesChanged_one": "{{files}} archivo cambiado",
     "tabFilesChanged_many": "{{files}} archivos cambiados",
     "tabFilesChanged_other": "{{files}} archivos cambiados",
-    "restoreFailedInput": "Recuperar mensaje fallido"
+    "restoreFailedInput": "Recuperar mensaje fallido",
+    "tabFilesChanged_zero": "{{files}} archivos cambiados",
+    "tabFilesChanged_two": "{{files}} archivos cambiados",
+    "tabFilesChanged_few": "{{files}} archivos cambiados"
   },
   "content": {
     "connectionIssue": "Problema de conexión",
@@ -107,7 +110,16 @@
     "fileCount_one": "{{count}} archivo",
     "fileCount_many": "{{count}} archivos",
     "fileCount_other": "{{count}} archivos",
-    "requestedBy": "Solicitado por {{name}}"
+    "requestedBy": "Solicitado por {{name}}",
+    "hiddenLines_zero": "... {{count}} líneas sin cambios",
+    "hiddenLines_two": "... {{count}} líneas sin cambios",
+    "hiddenLines_few": "... {{count}} líneas sin cambios",
+    "updatedPatches_zero": "{{count}} parches actualizados",
+    "updatedPatches_two": "{{count}} parches actualizados",
+    "updatedPatches_few": "{{count}} parches actualizados",
+    "fileCount_zero": "{{count}} archivos",
+    "fileCount_two": "{{count}} archivos",
+    "fileCount_few": "{{count}} archivos"
   },
   "composer": {
     "chooseAssistantMode": "Elegir modo de asistente",
@@ -255,7 +267,13 @@
     "filesChangedSimple_other": "{{files}} archivos cambiados",
     "filesChangedCompact_one": "{{files}} archivo cambiado, +{{additions}} / -{{deletions}}",
     "filesChangedCompact_many": "{{files}} archivos cambiados, +{{additions}} / -{{deletions}}",
-    "filesChangedCompact_other": "{{files}} archivos cambiados, +{{additions}} / -{{deletions}}"
+    "filesChangedCompact_other": "{{files}} archivos cambiados, +{{additions}} / -{{deletions}}",
+    "filesChangedSimple_zero": "{{files}} archivos cambiados",
+    "filesChangedSimple_two": "{{files}} archivos cambiados",
+    "filesChangedSimple_few": "{{files}} archivos cambiados",
+    "filesChangedCompact_zero": "{{files}} archivos cambiados, +{{additions}} / -{{deletions}}",
+    "filesChangedCompact_two": "{{files}} archivos cambiados, +{{additions}} / -{{deletions}}",
+    "filesChangedCompact_few": "{{files}} archivos cambiados, +{{additions}} / -{{deletions}}"
   },
   "session": {
     "chooseWorkspace": "Elegir un espacio de trabajo",

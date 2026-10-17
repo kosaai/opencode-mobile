@@ -31,8 +31,6 @@ export { ErrorBoundary } from 'expo-router';
 void SplashScreen.preventAutoHideAsync().catch(() => undefined);
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
-  const paperTheme = getPaperTheme(colorScheme === 'dark' ? 'dark' : 'light');
   const isE2EMode = Boolean(Constants.expoConfig?.extra?.e2eMode);
 
   useEffect(() => {
@@ -55,16 +53,28 @@ export default function RootLayout() {
     <GestureHandlerRootView style={styles.root}>
       <SafeAreaProvider>
         <OpencodeProvider>
-          <PaperProvider theme={paperTheme}>
-            <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-              <RootNavigator />
-              <UpdateHost />
-              <StatusBar style="auto" />
-            </ThemeProvider>
-          </PaperProvider>
+          <AppearanceShell />
         </OpencodeProvider>
       </SafeAreaProvider>
     </GestureHandlerRootView>
+  );
+}
+
+// The color scheme comes from the persisted preference, which only exists
+// inside OpencodeProvider, so the themed providers mount beneath it rather than
+// above it. This is what lets Light/Dark apply immediately on change.
+function AppearanceShell() {
+  const colorScheme = useColorScheme();
+  const paperTheme = getPaperTheme(colorScheme);
+
+  return (
+    <PaperProvider theme={paperTheme}>
+      <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+        <RootNavigator />
+        <UpdateHost />
+        <StatusBar style={colorScheme === 'dark' ? 'light' : 'dark'} />
+      </ThemeProvider>
+    </PaperProvider>
   );
 }
 

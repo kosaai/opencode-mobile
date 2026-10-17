@@ -44,7 +44,10 @@
     "tabFilesChanged_one": "{{files}} File Changed",
     "tabFilesChanged_many": "{{files}} Files Changed",
     "tabFilesChanged_other": "{{files}} Files Changed",
-    "restoreFailedInput": "Restore failed message"
+    "restoreFailedInput": "Restore failed message",
+    "tabFilesChanged_zero": "{{files}} Files Changed",
+    "tabFilesChanged_two": "{{files}} Files Changed",
+    "tabFilesChanged_few": "{{files}} Files Changed"
   },
   "content": {
     "connectionIssue": "Connection issue",
@@ -107,7 +110,16 @@
     "fileCount_one": "{{count}} file",
     "fileCount_many": "{{count}} files",
     "fileCount_other": "{{count}} files",
-    "requestedBy": "Requested by {{name}}"
+    "requestedBy": "Requested by {{name}}",
+    "hiddenLines_zero": "... {{count}} unchanged lines",
+    "hiddenLines_two": "... {{count}} unchanged lines",
+    "hiddenLines_few": "... {{count}} unchanged lines",
+    "updatedPatches_zero": "Updated {{count}} patches",
+    "updatedPatches_two": "Updated {{count}} patches",
+    "updatedPatches_few": "Updated {{count}} patches",
+    "fileCount_zero": "{{count}} files",
+    "fileCount_two": "{{count}} files",
+    "fileCount_few": "{{count}} files"
   },
   "composer": {
     "chooseAssistantMode": "Choose assistant mode",
@@ -255,7 +267,13 @@
     "filesChangedSimple_other": "{{files}} files changed",
     "filesChangedCompact_one": "{{files}} file changed, +{{additions}} / -{{deletions}}",
     "filesChangedCompact_many": "{{files}} files changed, +{{additions}} / -{{deletions}}",
-    "filesChangedCompact_other": "{{files}} files changed, +{{additions}} / -{{deletions}}"
+    "filesChangedCompact_other": "{{files}} files changed, +{{additions}} / -{{deletions}}",
+    "filesChangedSimple_zero": "{{files}} files changed",
+    "filesChangedSimple_two": "{{files}} files changed",
+    "filesChangedSimple_few": "{{files}} files changed",
+    "filesChangedCompact_zero": "{{files}} files changed, +{{additions}} / -{{deletions}}",
+    "filesChangedCompact_two": "{{files}} files changed, +{{additions}} / -{{deletions}}",
+    "filesChangedCompact_few": "{{files}} files changed, +{{additions}} / -{{deletions}}"
   },
   "session": {
     "chooseWorkspace": "Choose a workspace",

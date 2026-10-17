@@ -12,6 +12,9 @@ export default defineConfig({
     baseURL: 'http://127.0.0.1:19006',
     trace: 'retain-on-failure',
     screenshot: 'only-on-failure',
+    // Specs assert English copy; pin the browser locale so locale detection
+    // (which now includes Arabic) never depends on the host machine's language.
+    locale: 'en-US',
   },
   projects: [
     {

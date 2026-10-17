@@ -490,6 +490,9 @@ mounted composer's draft and attachments instead of replacing it with new tabs.
 
 - `lib/i18n/index.ts`
   i18next initialization, device-locale detection via `expo-localization`, and the persisted-preference sync.
+  It also calls `I18nManager.forceRTL` when the active language is right-to-left
+  (`isRtlLanguage`), so direction flips with the language preference and applies
+  from the next launch on native.
 - `lib/i18n/languages.ts`
   Supported language list plus pure preference/device-tag resolution.
 - `lib/i18n/resources.ts`

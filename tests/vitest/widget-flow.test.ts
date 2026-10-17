@@ -280,7 +280,7 @@ describe('compiled native widgets', () => {
         const tree = buildWidgetTree(jsx(SessionWidget, { snapshot, scheme, kind, height }));
         const texts = text(tree);
         const serialized = JSON.stringify(tree);
-        expect(tree.props.backgroundColor).toBe(scheme === 'light' ? '#FCFDFC' : '#16201D');
+        expect(tree.props.backgroundColor).toBe(scheme === 'light' ? '#FCFDFC' : '#101010');
         expect(tree.props).toMatchObject({ width: 'match_parent', height: 'match_parent', accessibilityLabel: i18n.t(`share:widgets.${kind}`) });
         expect(texts[0]).toBe(i18n.t(`share:widgets.${kind}`));
         expect(texts.length).toBeGreaterThan(1);
